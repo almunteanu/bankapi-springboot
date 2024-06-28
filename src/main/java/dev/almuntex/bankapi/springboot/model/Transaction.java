@@ -2,12 +2,16 @@ package dev.almuntex.bankapi.springboot.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
 
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 
+@Table("transactions")
 public class Transaction {
 
+    @Id
     private String id;
     @JsonProperty("user_id")
     private String userId;
@@ -22,7 +26,11 @@ public class Transaction {
     public Transaction() {
     }
 
-    public Transaction(String userId, BigDecimal amount, String reference, OffsetDateTime dateCreated, String bankSlogan) {
+    public Transaction(String userId,
+                       BigDecimal amount,
+                       String reference,
+                       OffsetDateTime dateCreated,
+                       String bankSlogan) {
         this.userId = userId;
         this.amount = amount;
         this.reference = reference;
